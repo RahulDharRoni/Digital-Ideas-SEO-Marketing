@@ -155,8 +155,10 @@ document.addEventListener("DOMContentLoaded", function () {
   new WOW().init();
 });
 ///////////////////////////////////////////////////////////////////////////////////
-document.getElementById("contact").addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent form submission
+const form = document.getElementById("contact");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent default form submission
 
   let name = document.getElementById("name").value.trim();
   let surname = document.getElementById("surname").value.trim();
@@ -183,6 +185,26 @@ document.getElementById("contact").addEventListener("submit", function (event) {
     return;
   }
 
-  // If all fields are valid, submit the form (e.g., to a local server)
-  alert("Form submitted successfully!");
+  // Store form data in localStorage
+  let formData = {
+    name: name,
+    surname: surname,
+    email: email,
+    message: message,
+  };
+
+  localStorage.setItem("formData", JSON.stringify(formData));
+
+  alert("Form submitted successfully! Data saved to local storage.");
+
+  // Call the resetForm function to clear the form fields
+  resetForm();
 });
+
+// Function to reset the form fields
+function resetForm() {
+  document.getElementById("name").value = "";
+  document.getElementById("surname").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("message").value = "";
+}
