@@ -1,0 +1,71 @@
+:root {
+  --main-bg: #4a4e4d;
+  --top-menu-bg: #0e9aa7;
+  --sub-menu-bg: #3da4ab;
+}
+
+.flex-ctr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav a {
+  line-height: 3rem;
+  padding: 0 1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+}
+
+#top-menu a:hover {
+  background-color: var(--sub-menu-bg);
+}
+
+header,
+#top-menu {
+  position: relative;
+}
+
+#top-menu {
+  z-index: 20;
+}
+
+#sub-menu {
+  display: none; /* Initially hidden */
+  position: absolute;
+  background-color: var(--sub-menu-bg);
+  border: 1px solid #ccc;
+  padding: 5px;
+  list-style: none;
+  min-width: 150px;
+  flex-direction: column; /* Stack submenu items vertically */
+}
+
+#sub-menu a {
+  display: flex; /* Make items flexible */
+  align-items: center; /* Align text to center */
+  justify-content: flex-start; /* Align items from left */
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+}
+
+#sub-menu a:hover {
+  background-color: #f4f4f4;
+}
+
+/* Show submenu when active */
+.submenu-active {
+  display: flex !important;
+  flex-direction: column; /* Ensure vertical stacking */
+  align-items: flex-start;
+}
