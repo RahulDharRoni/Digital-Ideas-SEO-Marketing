@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
   subMenuEl.classList.add("flex-around");
 
   const topMenuEl = document.getElementById("top-menu");
-  topMenuEl.style.height = "3rem";
   topMenuEl.style.backgroundColor = "var(--top-menu-bg)";
   topMenuEl.classList.add("flex-around");
 
@@ -154,4 +153,36 @@ document.addEventListener("DOMContentLoaded", function () {
     servicesRow.appendChild(colDiv);
   });
   new WOW().init();
+});
+///////////////////////////////////////////////////////////////////////////////////
+document.getElementById("contact").addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent form submission
+
+  let name = document.getElementById("name").value.trim();
+  let surname = document.getElementById("surname").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let message = document.getElementById("message").value.trim();
+
+  // Email regex pattern
+  let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (name === "") {
+    alert("Please enter your name.");
+    return;
+  }
+  if (surname === "") {
+    alert("Please enter your surname.");
+    return;
+  }
+  if (email === "" || !emailPattern.test(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+  if (message === "") {
+    alert("Please enter your message.");
+    return;
+  }
+
+  // If all fields are valid, submit the form (e.g., to a local server)
+  alert("Form submitted successfully!");
 });
